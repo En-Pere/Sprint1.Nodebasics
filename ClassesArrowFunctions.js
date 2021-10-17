@@ -22,15 +22,36 @@ class Persona {
  }
  //mètode
  dirNom(){
-   return "Aquest és el nom: " + this.nom;
+   return `Aquest és el nom: ${this.nom}`;
  }
-}
+};
 const miPersona = new Persona("Maria");
 console.log(miPersona.dirNom());
 
 // Nivell 3
 // Exercici 1
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
+
+// function Coche(marca, color, puertas, cv) {
+//   this.marca = marca;
+//   this.color = color;
+//   this.puertas = puertas;
+//   this.cv = cv; 
+// }
+
+// function Moto(ruedas, llantas) {
+//   Coche.call(this);
+//   this.ruedas = ruedas;
+//   this.llantas = llantas;
+// }
+
+// let coche1 = new Coche("Audi", "Rojo", 4, 130);
+// console.log(coche1);
+
+// let moto1 = new Moto("Honda", "Amarilla", 90, 2, 2);
+// console.log(moto1);
+
+
 
 
 
