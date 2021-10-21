@@ -57,7 +57,10 @@ let salaries = [{id: 1, salary: 4000},
                 {id: 3,salary: 2000}];
 
 
-const getEmployee = (id) => {
+var id = 2; //insertar el id del trabajador para que el programa haga las búsquedas
+
+//busca el trabajador
+const getEmployee = (id) => { 
     return new Promise((resolve, reject)=>{
         let buscaTrabajador = employees.find(trabajador => trabajador.id === id);
         if (buscaTrabajador) {
@@ -67,7 +70,9 @@ const getEmployee = (id) => {
         }
     });
 };
-getEmployee(3) //insertar el id a buscar
+
+//devuelve el mensaje de encontrar al trabajador o no
+getEmployee(id)
     .then((message) => { 
     console.log(message);
 })
@@ -78,6 +83,7 @@ getEmployee(3) //insertar el id a buscar
 // Exercici 2
 // Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
+//busca el salario
 const getSalary = (id) => {
     return new Promise((resolve, reject) => {
         let buscaSalario = salaries.find(salario => salario.id === id);
@@ -88,7 +94,8 @@ const getSalary = (id) => {
         }
     });
 };
-getSalary(3) //insertar el id a buscar
+//devuelve el mensaje de encontrar el salario o no
+getSalary(id)
     .then((message) => { 
     console.log(message);
 })
@@ -99,11 +106,28 @@ getSalary(3) //insertar el id a buscar
 // Exercici 3
 // Invoca la primera funció getEmployee i després getSalary niant l'execució de les dues promises.
 
-Promise.all([getEmployee(1), getSalary(1)]).then(message => {
+Promise.all([getEmployee(id), getSalary(id)]).then(message => {
     console.log(message);
 }, message => {
     console.log(message)
 });
+
+
+// Nivell 3
+// Exercici 1
+// Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
+
+var id2 = 5;
+
+Promise.all([getEmployee(id2), getSalary(id2)]).then(message => {
+    console.log(message);
+}, message => {
+    console.log(message)
+});
+
+
+
+
 
 
 
