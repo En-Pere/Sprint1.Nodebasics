@@ -117,6 +117,7 @@ Promise.all([getEmployee(id), getSalary(id)]).then(message => {
 // Exercici 1
 // Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
 
+//suposo que això no està bé. No se fer aquest exercici.
 var id2 = 5;
 
 Promise.all([getEmployee(id2), getSalary(id2)]).then(message => {
