@@ -5,7 +5,7 @@
 // Crea una funció que mostri per consola el nom d'usuari al invocar-la passant-li el nom com a paràmetre.
 
 function persona(nomUsuari) {
-  return console.log(nomUsuari);
+  console.log(nomUsuari);
 }
 persona("Oscar");
 
@@ -22,9 +22,9 @@ console.log(`La persona es diu: ${nom} ${cognom}`);
 // Invoca una funció que retorni un valor mitjançant template literals.
 
 function suma(num1, num2) {
-  return console.log(`La suma dels números ${num1} + ${num2} és: ${num1+num2}`);
+  return (`La suma dels números ${num1} + ${num2} és: ${num1+num2}`);
 }
-suma(6,4);
+console.log(suma(6,4));
 
 // Nivell 3
 // Exercici 1
@@ -44,7 +44,7 @@ for (var i=0; i<10; i++) {
 // Exercici 2
 // Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari rebut com a paràmetre.
 
-(function(userName){
+var myFunction = (function(userName){
   console.log(userName);
-}) ("Martina");
+  }) ("Martina");
 
