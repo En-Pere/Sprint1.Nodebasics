@@ -11,7 +11,7 @@ let salaries = [{id: 1, salary: 4000},
                 {id: 2, salary: 1000},
                 {id: 3, salary: 2000}];
 
-var id = 3; //variable que determina la id per treure el nom o el salari
+var id = 1; //variable que determina la id per treure el nom o el salari
 
 //arrow function cercant l'objecte pel seu ID
 const getEmployee = (id) => {
@@ -20,7 +20,7 @@ const getEmployee = (id) => {
         if (busqueda) {
             resolve (busqueda);
         } else {
-            reject (errorMessage);
+            reject ('Error, no hay datos de nombre');
         }
     });  
 }
@@ -28,8 +28,8 @@ getEmployee(id)
     .then((message) => { 
     console.log(message);
     })
-    .catch(() => { 
-    console.log('Error, no hay datos de nombre');
+    .catch((errorMessage) => { 
+    console.log(errorMessage);
     });
 
 //arrow function rebent per determinar salari.
@@ -39,7 +39,7 @@ const getSalary = (id) => {
         if (busqueda) {
             resolve (busqueda);
         } else {
-            reject (errorMessage);
+            reject ('Error, no hay datos de salario');
         }
     });  
 }
@@ -47,8 +47,8 @@ getSalary(id)
     .then((message) => { 
     console.log(message);
     })
-    .catch(() => { 
-    console.log('Error, no hay datos de salario');
+    .catch((errorMessage) => { 
+    console.log(errorMessage);
     });
 
 // Exercici 2
@@ -100,10 +100,8 @@ novaFunAsinc();
 // Exercici 1
 // Captura tots els errors possibles dels nivells 1 i 2.
 
-
-
-
-
+/*Errors correctament "disparats" al .catch quan les variables id no són vàlides o 
+quan la variable nombre (del nivell2) no és un string*/
 
 
 
