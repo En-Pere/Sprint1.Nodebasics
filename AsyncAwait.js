@@ -11,7 +11,7 @@ let salaries = [{id: 1, salary: 4000},
                 {id: 2, salary: 1000},
                 {id: 3, salary: 2000}];
 
-var id = 2; //variable que determina la id per treure el nom o el salari
+var id = 3; //variable que determina la id per treure el nom o el salari
 
 //arrow function cercant l'objecte pel seu ID
 const getEmployee = (id) => {
@@ -55,28 +55,50 @@ getSalary(id)
 // Crea una funció asíncrona que rebi un id d'empleat i imprimeixi per pantalla el nom de l'empleat i el seu salari, 
 // usant les funcions que has definit a l'exercici anterior.
 
-const resultadoBusqueda = (id) => {
-    let empleat = employees.find(o => o.id === id); //guardo el objeto empleado
-    let empleatSalari = salaries.find(o => o.id === id); //guardo el objeto salario
-    let frase = `El empleado buscado es: ${empleat.name} y su salario es: ${empleatSalari.salary}`; //guardo frase con el valor de cada objeto.
-    return frase;
-}
-
 async function asinRes() {
-    const resultado = await resultadoBusqueda(id);
-    let empleat = employees.find(o => o.id === id); //guardo el objeto empleado
-    let empleatSalari = salaries.find(o => o.id === id); //guardo el objeto salario
-    console.log(`El empleado buscado es: ${empleat.name} y su salario es: ${empleatSalari.salary}`);
+    try {
+        const resultado = await getEmployee(id);
+        const resultado2 = await getSalary(id);
+        console.log(resultado.name,  resultado2.salary);
+    } catch (errorMessage) {
+        console.log('Error, no hay datos')
+    }  
 }
-
 asinRes();
 
+// Nivell 2
+// Exercici 1
+// Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 
+var nombre = 'María';
 
+const saludar = (nombre) => {
+    return new Promise((resolve, reject) => {
+        if(typeof nombre === 'string') {
+            setTimeout(() => {
+                resolve (`Hola ${nombre}`);
+                }, 2000); 
+        }   else {
+                reject ('No has ingresado un nombre')
 
+        }
+        
+    }); 
+}
 
+async function novaFunAsinc() {
+    try {
+        const bienvenida = await saludar(nombre);
+        console.log(bienvenida);
+    } catch (errorMessage) {
+        console.log(errorMessage)
+    }
+}
+novaFunAsinc();
 
-
+// Nivell 3
+// Exercici 1
+// Captura tots els errors possibles dels nivells 1 i 2.
 
 
 
