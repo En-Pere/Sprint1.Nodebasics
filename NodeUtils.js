@@ -20,8 +20,9 @@ const missatge = () => {
 const fs = require('fs');
   
 let data = "Aquest és el missatge escrit dintre del fitxer provaExercici2.txt";
+let nomArxiu = "provaExercici2.txt";
   
-fs.writeFile("provaExercici2.txt", data, (err) => {
+fs.writeFile(nomArxiu, data, (err) => {
   if (err)
     console.log(err);
   else {
@@ -32,7 +33,7 @@ fs.writeFile("provaExercici2.txt", data, (err) => {
 // Exercici 3
 // Crea una altra funció que mostri per consola el contingut del fitxer de l'exercici anterior.
 
-fs.readFile('provaExercici2.txt', 'utf8', function(err, data){
+fs.readFile(nomArxiu, 'utf8', function(err, data){
     console.log(data);
 });
 
@@ -44,7 +45,7 @@ fs.readFile('provaExercici2.txt', 'utf8', function(err, data){
 const zlib = require("zlib");
 
 //per comprimir el fitxer del nivell 1
-zlib.gzip("provaExercici2.txt", (err, buffer) => {
+zlib.gzip(nomArxiu, (err, buffer) => {
     if (!err) {
     console.log('Arxiu correctament comprimit');
   } 
@@ -67,41 +68,80 @@ exec('dir', (error, stdout) => {
 // Nivell 3
 // - Exercici 1
 // Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1.
+
+data = "Aquest és el missatge escrit dintre del fitxer provaExercici2.txt";
+var msjConvertido = Buffer.from(data);
+var base64 = msjConvertido.toString('base64');
+var hexadecimal = msjConvertido.toString('Hex');
+var fitxer1base64 = 'fitxer1base64.txt';
+var fitxer1hexadecimal = 'fitxer1hexadecimal.txt';
+
+function crea2fitxers() {
+  fs.writeFile(fitxer1base64, base64, (err) => {
+    if (err) {
+      throw error
+    } else {
+      console.log(`Missatge: " ${data} " \n - Codificat en Base64 i guardat a l'arxiu -${fitxer1base64}-`)
+    }
+  });
+  fs.writeFile(fitxer1hexadecimal, hexadecimal, (err) => {
+    if (err) {
+      throw error
+    } else {
+      console.log(`Missatge: " ${data} " \n - Codificat en Hexadecimal i guardat a l'arxiu -${fitxer1hexadecimal}-`)
+    }
+  });
+}
+crea2fitxers();
+
 // Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algorisme aes-192-cbc, i esborri els fitxers inicials.
+
+const crypto = require('crypto');
+var encriptKey = "123456789012345678901234"; //random key de encriptación 24 digits
+var iniVector = "1234567890123456"; //inicialización Vector 16 digits
+
+fitxer1base64 = 'fitxer1base64.txt';
+fitxer1hexadecimal = 'fitxer1hexadecimal.txt';
+
+var encrypt = ((arxiu1) => {
+  let cifrado = crypto.createCipheriv('aes-192-cbc', encriptKey, iniVector);
+  let encriptada = cifrado.update(arxiu1, 'utf8', 'base64');
+  encriptada += cifrado.final('base64');
+  return encriptada;
+});
+
+arxiuEncriptat = encrypt(fitxer1base64);
+
+var encrypt2 = ((arxiu2) => {
+  let cifrado = crypto.createCipheriv('aes-192-cbc', encriptKey, iniVector);
+  let encriptada = cifrado.update(arxiu2, 'utf8', 'base64');
+  encriptada += cifrado.final('base64');
+  return encriptada;
+});
+
+arxiuEncriptat2 = encrypt2(fitxer1hexadecimal);
+
+guardaFitxersEncriptats = () => {
+  fs.writeFile(fitxer1base64, data, (err) => {
+    if (err)
+      console.log(err);
+    else {
+      console.log(`L'arxiu "fitxer1base64.txt" s'ha encriptat correctament: \n ${arxiuEncriptat}`);
+    }
+  });
+  
+  fs.writeFile(fitxer1hexadecimal, data, (err) => {
+    if (err)
+      console.log(err);
+    else {
+      console.log(`L'arxiu "fitxer1hexadecimal.txt" s'ha encriptat correctament: \n ${arxiuEncriptat2}`);
+    }
+  });
+};
+
+guardaFitxersEncriptats();
+
+
+
 // Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
-
-//revisar esto:
-
-// function encode_base64(filename){
-//     fs.readFile(path.join(__dirname,'/public/',filename),function(error,data){
-//       if(error){
-//         throw error;
-//       }else{
-//         var buf = Buffer.from(data);
-//         var base64 = buf.toString('base64');
-//         //console.log('Base64 of ddr.jpg :' + base64);
-//         return base64;
-//       }
-//     });
-//   }
-//   encode_base64('ddr.jpg');  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
