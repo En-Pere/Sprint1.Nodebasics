@@ -8,17 +8,12 @@
 
 
 const suma = (num1, num2) => {
-  return num1 + num2
+  return num1 + num2;
 }
+module.exports = suma;
 
 const resta = (num1, num2) => {
-  return num1 - num2
+  return num1 - num2;
 }
+module.exports = resta;
 
-const multiplicar = (num1, num2) => {
-  return num1 * num2
-}
-
-const dividir = (num1, num2) => {
-  return num1 / num2
-}

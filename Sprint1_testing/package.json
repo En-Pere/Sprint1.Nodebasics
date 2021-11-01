@@ -1,0 +1,32 @@
+{
+  "name": "sprint1_testing",
+  "version": "1.0.0",
+  "description": "sprint1_exercici_testing",
+  "main": "index.js",
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/En-Pere/Sprint1.Nodebasics.git#main"
+  },
+  "keywords": [
+    "#testing",
+    "#nodejs",
+    "#jestjs.io"
+  ],
+  "author": "p.r.b",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/En-Pere/Sprint1.Nodebasics/issues"
+  },
+  "homepage": "https://github.com/En-Pere/Sprint1.Nodebasics/tree/main#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "scripts": {
+  "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+  
+}
