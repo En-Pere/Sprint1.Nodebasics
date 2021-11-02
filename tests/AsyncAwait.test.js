@@ -2,7 +2,13 @@
 // Crea els tests corresponents per verificar el funcionament de l'exercici Async / Await Nivell 2 - Exercici 1
 
 
-const { suma, resta, multiplicacion, division } = require('../app/AsyncAwait');
+const { getEmployee } = require('../app/AsyncAwait');
+
+test('Empleado número 1', async () => {
+    expect(getEmployee(1)).toBe('Linux Torvalds');
+  });
+
+  
 
 
 
