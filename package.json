@@ -1,5 +1,20 @@
 {
+  "name": "20211102_testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^27.3.1"
+  },
   "devDependencies": {
     "jest": "^27.3.1"
-  }
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
+
+
