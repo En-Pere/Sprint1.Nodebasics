@@ -27,20 +27,22 @@ console.log(`Mala suerte, ${mensajeHayMulta}`);
 // (que s'imprimirà per consola) en funció del paràmetre rebut.
 
 //funcion
-const numeroRandom = (nombre, callback) => {
-    console.log(`Hola ${nombre}:`)
-    callback();
+const numeroRandom = (nombre, generaNumero) => {
+    return `Hola ${nombre}: ` + generaNumero;
 };
 
 //callback function
-function generaNumero() {
-    var elNum = Math.floor(Math.random(5)*10);
-    if(elNum>5) {
-        return console.log(`Tu numero random es > 5, ha salido: ${elNum}`)
-    }   else {
-        return console.log(`Tu número random es = o < 5, ha salido: ${elNum}`)
+function generaNumero(num) {
+    if(num>5) {
+        return `Has elegido un número mayor que 5`
+    }  else {
+        return `Has elegido un número igual o menor que 5`
     }
 };
+
+console.log(numeroRandom('Macarena', generaNumero(5)))
+
+
 
 //pasando función a argumento
 numeroRandom('Antonio', generaNumero);
