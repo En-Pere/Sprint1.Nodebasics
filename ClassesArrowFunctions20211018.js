@@ -1,9 +1,11 @@
 // Nivell 1
 // Exercici 1
 // Mostra per la consola el resultat d'una arrow function autoinvocable que sumi dos nombres.
-((num1,num2) => {
-  return console.log(num1+num2);
+var suma = ((num1,num2) => {
+  return num1+num2;
 })(5,15);
+
+console.log(suma); 
 
 // Nivell 2
 // Exercici 1
