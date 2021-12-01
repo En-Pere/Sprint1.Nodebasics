@@ -28,7 +28,7 @@ console.log(`Mala suerte, ${mensajeHayMulta}`);
 
 //funcion
 const numeroRandom = (nombre, generaNumero) => {
-    return `Hola ${nombre}: ` + generaNumero;
+    console.log(`Hola ${nombre}: ` + generaNumero);
 };
 
 //callback function
@@ -40,12 +40,7 @@ function generaNumero(num) {
     }
 };
 
-console.log(numeroRandom('Macarena', generaNumero(5)))
-
-
-
-//pasando función a argumento
-numeroRandom('Antonio', generaNumero);
+numeroRandom('Macarena', generaNumero(10));
 
 // Nivell 2
 // Exercici 1
